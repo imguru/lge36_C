@@ -7,6 +7,8 @@
 // 4. aceept(): 연결을 수락한다.
 
 // Echo Server / Client
+#include <unistd.h>
+
 #include <sys/types.h>          /* See NOTES */
 #include <sys/socket.h>
 #include <arpa/inet.h>
@@ -55,9 +57,28 @@ int main() {
 	struct sockaddr_in caddr = {0, };
 	socklen_t socklen = sizeof caddr;
 
+	// 이제 csock을 통해 클라이언트와 데이터를 교환하는 것이 가능합니다.
+	//  write: 데이터를 전송
+	//  read: 데이터를 수신
 	int csock = accept(ssock, (struct sockaddr *)&caddr, &socklen);
 	printf("csock: %d\n", csock);
-
+	
+	char buf[128];
+	while (1) {
+		int ret = read(csock, buf, sizeof buf);
+		if (ret == 0) {
+			printf("연결이 종료되었습니다.\n");
+			break;
+		} else if (ret == -1) {
+			perror("read");
+			break;
+		} else {
+			write(csock, buf, ret);
+		}
+	}
+	
+	close(csock);
+	close(ssock);
 }
 
 
