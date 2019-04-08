@@ -29,6 +29,7 @@ int main() {
 		perror("connect");
 		return -1;
 	}
+	printf("서버와의 접속이 성립되었습니다...\n");
 
 	char buf[128];
 	while ((ret = read(0, buf, sizeof buf)) > 0) {
