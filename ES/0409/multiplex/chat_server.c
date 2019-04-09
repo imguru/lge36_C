@@ -70,7 +70,8 @@ int main() {
 						return 1;
 					}
 
-					printf("client: %s\n", inet_ntoa(caddr.sin_addr));
+					printf("client: %s %d\n", inet_ntoa(caddr.sin_addr), 
+							ntohs(caddr.sin_port));
 
 					event.data.fd = csock;
 					event.events = EPOLLIN;
