@@ -7,38 +7,15 @@
 #include <stdio.h>
 #include <pthread.h>
 
-pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
-
-int clients[1024];
-int n = 0;
-
+// Thread per connection server
+//  : 새로운 클라이언트마다 데이터를 교환하기 위한 스레드를 생성한다.
 void *thread_handler(void *arg) {
 	int csock = (intptr_t)arg;  // !!
-
-	pthread_mutex_lock(&lock);
-	clients[n++] = csock;
-	pthread_mutex_unlock(&lock);
-
 	int ret;
 	char buf[64];
-	int i;
 	while ((ret = read(csock, buf, sizeof buf)) > 0) {
-		pthread_mutex_lock(&lock);
-		for (i = 0; i < n; ++i) {
-			write(clients[i], buf, ret);
-		}
-		pthread_mutex_unlock(&lock);
+		write(csock, buf, ret);
 	}
-
-	pthread_mutex_lock(&lock);
-	for (i = 0; i < n; ++i) {
-		if (clients[i] == csock) {
-			clients[i] = clients[n-1];
-			break;
-		}
-	}
-	n--;
-	pthread_mutex_unlock(&lock);
 
 	close(csock);
 	printf("클라이언트와 연결이 종료되었습니다..\n");
@@ -85,6 +62,12 @@ int main() {
 		intptr_t arg = csock;
 		pthread_create(&thread, NULL, thread_handler, (void *)arg);
 		pthread_detach(thread);
+		// pthread_join을 비동기적으로 호출하는 것이 어렵다.
+		// pthread_detach를 사용하면, 스레드가 종료할 경우, 스스로의 자원을
+		// 파괴한다.
+		//  = signal(SIGCHLD, SIG_IGN);
+
+		// pthread_join(thread, NULL);
 	}
 
 	close(ssock);
