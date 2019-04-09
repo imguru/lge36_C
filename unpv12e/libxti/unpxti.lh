@@ -1,0 +1,152 @@
+/* include unpxtih1 */
+#ifndef __unp_xti_h##  1 ##src/libxti/unpxti.h##
+#define __unp_xti_h##  2 ##src/libxti/unpxti.h##
+
+#include    "unp.h"##  3 ##src/libxti/unpxti.h##
+
+#include    <xti.h>##  4 ##src/libxti/unpxti.h##
+#ifdef  HAVE_XTI_INET_H##  5 ##src/libxti/unpxti.h##
+#include    <xti_inet.h>##  6 ##src/libxti/unpxti.h##
+#endif##  7 ##src/libxti/unpxti.h##
+#ifdef  HAVE_NETCONFIG_H##  8 ##src/libxti/unpxti.h##
+#include    <netconfig.h>##  9 ##src/libxti/unpxti.h##
+#endif## 10 ##src/libxti/unpxti.h##
+#ifdef  HAVE_NETDIR_H## 11 ##src/libxti/unpxti.h##
+#include    <netdir.h>## 12 ##src/libxti/unpxti.h##
+#endif## 13 ##src/libxti/unpxti.h##
+
+#ifdef  INFTIM_UNPH## 14 ##src/libxti/unpxti.h##
+#undef  INFTIM                  /* was not in <poll.h>, undef for <stropts.h> */## 15 ##src/libxti/unpxti.h##
+#endif## 16 ##src/libxti/unpxti.h##
+
+#include    <stropts.h>## 17 ##src/libxti/unpxti.h##
+
+/* Provide compatibility with the new names prepended with T_## 18 ##src/libxti/unpxti.h##
+   in XNS Issue 5, which are not in Posix.1g. */## 19 ##src/libxti/unpxti.h##
+
+#ifndef T_INET_TCP## 20 ##src/libxti/unpxti.h##
+#define T_INET_TCP      INET_TCP## 21 ##src/libxti/unpxti.h##
+/* $$.Ic T_INET_TCP$$ */
+#endif## 22 ##src/libxti/unpxti.h##
+/* end unpxtih1 */
+#ifndef T_INET_UDP## 23 ##src/libxti/unpxti.h##
+#define T_INET_UDP      INET_UDP## 24 ##src/libxti/unpxti.h##
+#endif## 25 ##src/libxti/unpxti.h##
+#ifndef T_INET_IP## 26 ##src/libxti/unpxti.h##
+#define T_INET_IP       INET_IP## 27 ##src/libxti/unpxti.h##
+#endif## 28 ##src/libxti/unpxti.h##
+#ifndef T_TCP_NODELAY## 29 ##src/libxti/unpxti.h##
+#define T_TCP_NODELAY   TCP_NODELAY## 30 ##src/libxti/unpxti.h##
+#endif## 31 ##src/libxti/unpxti.h##
+#ifndef T_TCP_MAXSEG## 32 ##src/libxti/unpxti.h##
+#define T_TCP_MAXSEG    TCP_MAXSEG## 33 ##src/libxti/unpxti.h##
+#endif## 34 ##src/libxti/unpxti.h##
+#ifndef T_TCP_KEEPALIVE## 35 ##src/libxti/unpxti.h##
+#define T_TCP_KEEPALIVE TCP_KEEPALIVE## 36 ##src/libxti/unpxti.h##
+#endif## 37 ##src/libxti/unpxti.h##
+#ifndef T_UDP_CHECKSUM## 38 ##src/libxti/unpxti.h##
+#define T_UDP_CHECKSUM  UDP_CHECKSUM## 39 ##src/libxti/unpxti.h##
+#endif## 40 ##src/libxti/unpxti.h##
+#ifndef T_IP_OPTIONS## 41 ##src/libxti/unpxti.h##
+#define T_IP_OPTIONS    IP_OPTIONS## 42 ##src/libxti/unpxti.h##
+#endif## 43 ##src/libxti/unpxti.h##
+#ifndef T_IP_TOS## 44 ##src/libxti/unpxti.h##
+#define T_IP_TOS        IP_TOS## 45 ##src/libxti/unpxti.h##
+#endif## 46 ##src/libxti/unpxti.h##
+#ifndef T_IP_TTL## 47 ##src/libxti/unpxti.h##
+#define T_IP_TTL        IP_TTL## 48 ##src/libxti/unpxti.h##
+#endif## 49 ##src/libxti/unpxti.h##
+#ifndef T_IP_REUSEADDR## 50 ##src/libxti/unpxti.h##
+#define T_IP_REUSEADDR  IP_REUSEADDR## 51 ##src/libxti/unpxti.h##
+#endif## 52 ##src/libxti/unpxti.h##
+#ifndef T_IP_DONTROUTE## 53 ##src/libxti/unpxti.h##
+#define T_IP_DONTROUTE  IP_DONTROUTE## 54 ##src/libxti/unpxti.h##
+#endif## 55 ##src/libxti/unpxti.h##
+/* include unpxtih2 */
+#ifndef T_IP_BROADCAST## 56 ##src/libxti/unpxti.h##
+#define T_IP_BROADCAST  IP_BROADCAST## 57 ##src/libxti/unpxti.h##
+/* $$.Ic T_IP_BROADCAST$$ */
+#endif## 58 ##src/libxti/unpxti.h##
+
+/* Define the appropriate devices for t_open(). */## 59 ##src/libxti/unpxti.h##
+#ifdef  HAVE_DEV_TCP## 60 ##src/libxti/unpxti.h##
+#define XTI_TCP     "/dev/tcp"## 61 ##src/libxti/unpxti.h##
+#define XTI_UDP     "/dev/udp"## 62 ##src/libxti/unpxti.h##
+#endif## 63 ##src/libxti/unpxti.h##
+#ifdef  HAVE_DEV_XTI_TCP## 64 ##src/libxti/unpxti.h##
+#define XTI_TCP     "/dev/xti/tcp"## 65 ##src/libxti/unpxti.h##
+#define XTI_UDP     "/dev/xti/udp"## 66 ##src/libxti/unpxti.h##
+#endif## 67 ##src/libxti/unpxti.h##
+#ifdef  HAVE_DEV_STREAMS_XTISO_TCP## 68 ##src/libxti/unpxti.h##
+#define XTI_TCP     "/dev/streams/xtiso/tcp+"   /* + for XPG4 */## 69 ##src/libxti/unpxti.h##
+#define XTI_UDP     "/dev/streams/xtiso/udp+"   /* + for XPG4 */## 70 ##src/libxti/unpxti.h##
+#endif## 71 ##src/libxti/unpxti.h##
+
+    /* 4device to t_open() for t_accept(); set by tcp_listen() */## 72 ##src/libxti/unpxti.h##
+/* $$.Id xti_serv_dev$$ */
+extern char xti_serv_dev[];## 73 ##src/libxti/unpxti.h##
+/* end unpxtih2 */
+
+void    err_xti(const char *fmt,...);## 74 ##src/libxti/unpxti.h##
+void    err_xti_ret(const char *fmt,...);## 75 ##src/libxti/unpxti.h##
+
+int     Getmsg(int, struct strbuf *, struct strbuf *, int *);## 76 ##src/libxti/unpxti.h##
+void    Putmsg(int, const struct strbuf *, const struct strbuf *, int);## 77 ##src/libxti/unpxti.h##
+
+#ifdef  HAVE_NETCONFIG_H## 78 ##src/libxti/unpxti.h##
+void   *Setnetconfig(void);## 79 ##src/libxti/unpxti.h##
+void   *Setnetpath(void);## 80 ##src/libxti/unpxti.h##
+#endif## 81 ##src/libxti/unpxti.h##
+
+void   *T_alloc(int, int, int);## 82 ##src/libxti/unpxti.h##
+int     T_accept(int, int, struct t_call *);## 83 ##src/libxti/unpxti.h##
+void    T_bind(int, const struct t_bind *, struct t_bind *);## 84 ##src/libxti/unpxti.h##
+void    T_close(int);## 85 ##src/libxti/unpxti.h##
+void    T_connect(int, const struct t_call *, struct t_call *);## 86 ##src/libxti/unpxti.h##
+void    T_free(void *, int);## 87 ##src/libxti/unpxti.h##
+void    T_getprotaddr(int, struct t_bind *, struct t_bind *);## 88 ##src/libxti/unpxti.h##
+int     T_getstate(int);## 89 ##src/libxti/unpxti.h##
+void    T_listen(int, struct t_call *);## 90 ##src/libxti/unpxti.h##
+int     T_look(int);## 91 ##src/libxti/unpxti.h##
+int     T_open(const char *, int, struct t_info *);## 92 ##src/libxti/unpxti.h##
+void    T_optmgmt(int, const struct t_optmgmt *, struct t_optmgmt *);## 93 ##src/libxti/unpxti.h##
+int     T_rcv(int, void *, unsigned int, int *);## 94 ##src/libxti/unpxti.h##
+void    T_rcvdis(int, struct t_discon *);## 95 ##src/libxti/unpxti.h##
+void    T_rcvrel(int);## 96 ##src/libxti/unpxti.h##
+void    T_rcvudata(int, struct t_unitdata *, int *);## 97 ##src/libxti/unpxti.h##
+void    T_rcvuderr(int, struct t_uderr *);## 98 ##src/libxti/unpxti.h##
+void    T_snd(int, void *, unsigned int, int);## 99 ##src/libxti/unpxti.h##
+void    T_sndrel(int);##100 ##src/libxti/unpxti.h##
+void    T_sndudata(int, struct t_unitdata *);##101 ##src/libxti/unpxti.h##
+
+int     xti_accept(int, struct netbuf *, int);##102 ##src/libxti/unpxti.h##
+int     xti_getopt(int, int, int, void *, socklen_t *);##103 ##src/libxti/unpxti.h##
+char   *xti_flags_str(int);##104 ##src/libxti/unpxti.h##
+char   *xti_tlook_str(int);##105 ##src/libxti/unpxti.h##
+char   *xti_ntop(const struct netbuf *);##106 ##src/libxti/unpxti.h##
+char   *xti_ntop_host(const struct netbuf *);##107 ##src/libxti/unpxti.h##
+int     xti_rdwr(int);##108 ##src/libxti/unpxti.h##
+int     xti_setopt(int, int, int, void *, socklen_t);##109 ##src/libxti/unpxti.h##
+
+int     Xti_accept(int, struct netbuf *, int);##110 ##src/libxti/unpxti.h##
+void    Xti_getopt(int, int, int, void *, socklen_t *);##111 ##src/libxti/unpxti.h##
+char   *Xti_flags_str(int);##112 ##src/libxti/unpxti.h##
+char   *Xti_tlook_str(int);##113 ##src/libxti/unpxti.h##
+char   *Xti_ntop(const struct netbuf *);##114 ##src/libxti/unpxti.h##
+char   *Xti_ntop_host(const struct netbuf *);##115 ##src/libxti/unpxti.h##
+void    Xti_rdwr(int);##116 ##src/libxti/unpxti.h##
+void    Xti_setopt(int, int, int, void *, socklen_t);##117 ##src/libxti/unpxti.h##
+
+char   *xti_str_lend(struct t_opthdr *);##118 ##src/libxti/unpxti.h##
+char   *xti_str_uscalard(struct t_opthdr *);##119 ##src/libxti/unpxti.h##
+char   *xti_str_uchard(struct t_opthdr *);##120 ##src/libxti/unpxti.h##
+char   *xti_str_ucharx(struct t_opthdr *);##121 ##src/libxti/unpxti.h##
+char   *xti_str_yn(t_uscalar_t);##122 ##src/libxti/unpxti.h##
+char   *xti_str_syng(t_scalar_t);##123 ##src/libxti/unpxti.h##
+char   *xti_str_uiyn(struct t_opthdr *);##124 ##src/libxti/unpxti.h##
+char   *xti_str_usyn(struct t_opthdr *);##125 ##src/libxti/unpxti.h##
+char   *xti_str_linger(struct t_opthdr *);##126 ##src/libxti/unpxti.h##
+char   *xti_str_kpalive(struct t_opthdr *);##127 ##src/libxti/unpxti.h##
+char   *xti_str_flags(t_scalar_t);##128 ##src/libxti/unpxti.h##
+
+#endif  /* __unp_xti_h */##129 ##src/libxti/unpxti.h##

@@ -1,0 +1,10 @@
+upolu % ./tcprecv04 9999          
+revents = 1
+read 3 bytes: 123, flags = 0
+revents = 1
+read 1 bytes: 4, flags = T_EXPEDITED
+revents = 1
+read 1 bytes: 5, flags = 0
+revents = 1
+received T_ORDREL
+

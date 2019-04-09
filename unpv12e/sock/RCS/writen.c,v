@@ -1,0 +1,44 @@
+head     1.1;
+branch   ;
+access   ;
+symbols  ;
+locks    ;
+comment  @ * @;
+
+
+1.1
+date     94.01.17.14.59.32;  author rstevens;  state Exp;
+branches ;
+next     ;
+
+
+desc
+@@
+
+
+
+1.1
+log
+@08Dec93 version for tcpipi
+@
+text
+@#include	"ourhdr.h"
+
+ssize_t						/* Write "n" bytes to a descriptor. */
+writen(int fd, const void *vptr, size_t n)
+{
+	size_t		nleft, nwritten;
+	const char	*ptr;
+
+	ptr = vptr;	/* can't do pointer arithmetic on void* */
+	nleft = n;
+	while (nleft > 0) {
+		if ( (nwritten = write(fd, ptr, nleft)) <= 0)
+			return(nwritten);		/* error */
+
+		nleft -= nwritten;
+		ptr   += nwritten;
+	}
+	return(n);
+}
+@

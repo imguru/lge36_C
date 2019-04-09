@@ -1,0 +1,108 @@
+# This file is a shell script that caches the results of configure
+# tests run on this system so they can be shared between configure
+# scripts and configure runs.  It is not useful on other systems.
+# If it contains results you don't want to keep, you may remove or edit it.
+#
+# By default, configure uses ./config.cache as the cache file,
+# creating it if it does not exist already.  You can give configure
+# the --cache-file=FILE option to use a different cache file; that is
+# what configure does when it calls configure scripts in
+# subdirectories, so they share the cache.
+# Giving --cache-file=/dev/null disables caching, for debugging configure.
+# config.status only pays attention to the cache file if you give it the
+# --recheck option to rerun configure.
+#
+ac_cv_func_gethostname=${ac_cv_func_gethostname='yes'}
+ac_cv_have_inet_aton_proto=${ac_cv_have_inet_aton_proto='yes'}
+ac_cv_type_size_t=${ac_cv_type_size_t='yes'}
+ac_cv_prog_cc_works=${ac_cv_prog_cc_works='yes'}
+ac_cv_func_isfdtype=${ac_cv_func_isfdtype='no'}
+ac_cv_have_snprintf_proto=${ac_cv_have_snprintf_proto='yes'}
+ac_cv_header_netinet_in_h=${ac_cv_header_netinet_in_h='yes'}
+ac_cv_unixdomain=${ac_cv_unixdomain='yes'}
+ac_cv_have_hstrerror_proto=${ac_cv_have_hstrerror_proto='yes'}
+ac_cv_have_getaddrinfo_proto=${ac_cv_have_getaddrinfo_proto='no'}
+ac_cv_header_stdlib_h=${ac_cv_header_stdlib_h='yes'}
+ac_cv_header_netdb_h=${ac_cv_header_netdb_h='yes'}
+ac_cv_header_stropts_h=${ac_cv_header_stropts_h='no'}
+ac_cv_header_sys_time_h=${ac_cv_header_sys_time_h='yes'}
+ac_cv_prog_cc_g=${ac_cv_prog_cc_g='yes'}
+ac_cv_func_sockatmark=${ac_cv_func_sockatmark='no'}
+ac_cv_have_getrusage_proto=${ac_cv_have_getrusage_proto='yes'}
+ac_cv_header_netconfig_h=${ac_cv_header_netconfig_h='no'}
+ac_cv_ipv4=${ac_cv_ipv4='yes'}
+ac_cv_header_netdir_h=${ac_cv_header_netdir_h='no'}
+ac_cv_lib_nsl_t_open=${ac_cv_lib_nsl_t_open='no'}
+ac_cv_type_t_uscalar_t=${ac_cv_type_t_uscalar_t='no'}
+ac_cv_type_t_scalar_t=${ac_cv_type_t_scalar_t='no'}
+ac_cv_ipv6=${ac_cv_ipv6='no'}
+ac_cv_have_getnameinfo_proto=${ac_cv_have_getnameinfo_proto='no'}
+ac_cv_header_sys_wait_h=${ac_cv_header_sys_wait_h='yes'}
+ac_cv_prog_RANLIB=${ac_cv_prog_RANLIB='ranlib'}
+ac_cv_have_timespec_struct=${ac_cv_have_timespec_struct='yes'}
+ac_cv_lib_resolv_res_init=${ac_cv_lib_resolv_res_init='yes'}
+ac_cv_func_inet_aton=${ac_cv_func_inet_aton='yes'}
+ac_cv_msghdr_has_msg_control=${ac_cv_msghdr_has_msg_control='yes'}
+ac_cv_func_snprintf=${ac_cv_func_snprintf='yes'}
+ac_cv_header_sys_sysctl_h=${ac_cv_header_sys_sysctl_h='yes'}
+ac_cv_header_fcntl_h=${ac_cv_header_fcntl_h='yes'}
+ac_cv_have_if_nametoindex_proto=${ac_cv_have_if_nametoindex_proto='no'}
+ac_cv_func_vsnprintf=${ac_cv_func_vsnprintf='yes'}
+ac_cv_header_xti_h=${ac_cv_header_xti_h='no'}
+ac_cv_func_hstrerror=${ac_cv_func_hstrerror='yes'}
+ac_cv_func_getaddrinfo=${ac_cv_func_getaddrinfo='no'}
+ac_cv_have_inet_pton_proto=${ac_cv_have_inet_pton_proto='yes'}
+ac_cv_lib_xti_t_open=${ac_cv_lib_xti_t_open='no'}
+ac_cv_lib_socket_socket=${ac_cv_lib_socket_socket='no'}
+ac_cv_prog_CC=${ac_cv_prog_CC='gcc'}
+ac_cv_have_if_nameindex_struct=${ac_cv_have_if_nameindex_struct='no'}
+ac_cv_multicast=${ac_cv_multicast='yes'}
+ac_cv_header_sys_stat_h=${ac_cv_header_sys_stat_h='yes'}
+ac_cv_header_sys_select_h=${ac_cv_header_sys_select_h='yes'}
+ac_cv_func_getnameinfo=${ac_cv_func_getnameinfo='no'}
+ac_cv_header_sys_types_h=${ac_cv_header_sys_types_h='yes'}
+ac_cv_header_stdc=${ac_cv_header_stdc='yes'}
+ac_cv_type_uint8_t=${ac_cv_type_uint8_t='no'}
+ac_cv_header_time=${ac_cv_header_time='yes'}
+ac_cv_header_strings_h=${ac_cv_header_strings_h='yes'}
+ac_cv_header_sys_uio_h=${ac_cv_header_sys_uio_h='yes'}
+ac_cv_header_unistd_h=${ac_cv_header_unistd_h='yes'}
+ac_cv_header_string_h=${ac_cv_header_string_h='yes'}
+ac_cv_have_sockaddr_dl_struct=${ac_cv_have_sockaddr_dl_struct='yes'}
+ac_cv_header_stdio_h=${ac_cv_header_stdio_h='yes'}
+ac_cv_have_pselect_proto=${ac_cv_have_pselect_proto='no'}
+ac_cv_func_if_nametoindex=${ac_cv_func_if_nametoindex='no'}
+ac_cv_func_bzero=${ac_cv_func_bzero='yes'}
+ac_cv_header_sys_sockio_h=${ac_cv_header_sys_sockio_h='yes'}
+ac_cv_header_sys_filio_h=${ac_cv_header_sys_filio_h='yes'}
+ac_cv_header_time_h=${ac_cv_header_time_h='yes'}
+ac_cv_func_inet_pton=${ac_cv_func_inet_pton='yes'}
+ac_cv_have_gethostname_proto=${ac_cv_have_gethostname_proto='yes'}
+ac_cv_header_pthread_h=${ac_cv_header_pthread_h='yes'}
+ac_cv_header_sys_socket_h=${ac_cv_header_sys_socket_h='yes'}
+ac_cv_prog_gcc=${ac_cv_prog_gcc='yes'}
+ac_cv_prog_cc_cross=${ac_cv_prog_cc_cross='no'}
+ac_cv_have_isfdtype_proto=${ac_cv_have_isfdtype_proto='no'}
+ac_cv_type_uint32_t=${ac_cv_type_uint32_t='no'}
+ac_cv_type_int32_t=${ac_cv_type_int32_t='yes'}
+ac_cv_header_errno_h=${ac_cv_header_errno_h='yes'}
+ac_cv_lib_pthreads_pthread_create=${ac_cv_lib_pthreads_pthread_create='no'}
+ac_cv_have_addrinfo_struct=${ac_cv_have_addrinfo_struct='no'}
+ac_cv_type_uint16_t=${ac_cv_type_uint16_t='no'}
+ac_cv_type_int16_t=${ac_cv_type_int16_t='yes'}
+ac_cv_prog_CPP=${ac_cv_prog_CPP='gcc -E'}
+ac_cv_lib_pthread_pthread_create=${ac_cv_lib_pthread_pthread_create='no'}
+ac_cv_have_sockatmark_proto=${ac_cv_have_sockatmark_proto='no'}
+ac_cv_header_xti_inet_h=${ac_cv_header_xti_inet_h='no'}
+ac_cv_header_poll_h=${ac_cv_header_poll_h='no'}
+ac_cv_header_sys_ioctl_h=${ac_cv_header_sys_ioctl_h='yes'}
+ac_cv_header_sys_un_h=${ac_cv_header_sys_un_h='yes'}
+ac_cv_func_gethostbyname2=${ac_cv_func_gethostbyname2='yes'}
+ac_cv_sockaddr_has_sa_len=${ac_cv_sockaddr_has_sa_len='yes'}
+ac_cv_type_socklen_t=${ac_cv_type_socklen_t='no'}
+ac_cv_header_arpa_inet_h=${ac_cv_header_arpa_inet_h='yes'}
+ac_cv_type_ssize_t=${ac_cv_type_ssize_t='yes'}
+ac_cv_func_pselect=${ac_cv_func_pselect='no'}
+ac_cv_func_gethostbyname_r=${ac_cv_func_gethostbyname_r='no'}
+ac_cv_type_sa_family_t=${ac_cv_type_sa_family_t='no'}
+ac_cv_header_signal_h=${ac_cv_header_signal_h='yes'}

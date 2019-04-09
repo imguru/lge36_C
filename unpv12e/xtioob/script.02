@@ -1,0 +1,17 @@
+upolu % ./tcprecv02 8888
+read 1 bytes: 1, flags = T_MORE
+read 1 bytes: 2, flags = T_MORE
+read 1 bytes: 3, flags = 0
+SIGPOLL received, event = T_EXDATA
+read 1 bytes: 4, flags = T_EXPEDITED
+SIGPOLL received, event = T_DATA
+read 1 bytes: 5, flags = T_MORE
+read 1 bytes: 6, flags = 0
+SIGPOLL received, event = T_EXDATA
+read 1 bytes: 7, flags = T_EXPEDITED
+SIGPOLL received, event = T_DATA
+read 1 bytes: 8, flags = T_MORE
+read 1 bytes: 9, flags = 0
+SIGPOLL received, event = T_ORDREL
+received T_ORDREL
+

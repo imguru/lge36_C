@@ -1,0 +1,179 @@
+QUICK AND DIRTY
+===============
+
+    cd <some-directory-of-your-choosing>
+    gunzip -c unpv12e.tar.gz | tar xvf -
+
+    cd unpv12e
+    ./configure    # try to figure out all implementation differences
+
+    cd lib         # build the basic library that all programs need
+    make           # use "gmake" everywhere on BSD/OS systems
+
+    cd ../libfree  # continue building the basic library
+    make
+
+    cd ../libgai   # the getaddrinfo() and getnameinfo() functions
+    make
+
+    cd ../libroute # only if your system supports 4.4BSD style routing sockets
+    make           # only if your system supports 4.4BSD style routing sockets
+
+    cd ../libxti   # only if your system supports XTI
+    make           # only if your system supports XTI
+
+    cd ../intro    # build and test a basic client program
+    make daytimetcpcli
+    ./daytimetcpcli 127.0.0.1
+
+If all that works, you're all set to start compiling individual programs.
+
+Notice that all the source code assumes tabs every 4 columns, not 8.
+
+MORE DETAILS
+============
+
+0.  To extract the source directories from the unpv12e.tar.gz tar file,
+    execute:
+
+	cd <some-directory-of-your-choosing>
+	gunzip -c unpv12e.tar.gz | tar xvf -
+
+    This creates a directory named unpv12e/ containing about 40 other
+    directories.  The names of these 40 other directories are what appears
+    in the horizontal rules that start and end each source code listing
+    in the book.  For example, the file unpv12e/intro/daytimetcpcli.c
+    corresponds to the source code in Figure 1.5 (Page 6) of the book.
+
+1.  There is a "unp.h" header that appears in every one of the 40 directories.
+    If you need to make any changes to this "unp.h" header, notice that it
+    is a hard link in each directory, so you only need to change it once.
+    Hard links are also used with the other "unp*.h" headers.
+
+2.  I used the GNU autoconf package to generate a shell script named
+    "configure" that you must execute.  This script will try and figure
+    out lots of characteristics of your system.
+
+    This script builds two important files "Make.defines" and "config.h".
+    Each "Makefile" in each of the 40 directories includes "Make.defines",
+    and the first #include done by "unp.h" is of "config.h".
+
+    These two files *must* be set correctly for your system, or you will
+    not be able to build the source code.
+
+3.  Go into the "lib/" directory and type "make".  This builds the library
+    "libunp.a" that is required by almost all of the programs.  There may
+    be compiler warnings (see NOTES below).
+
+    Go into the "libfree/" directory and type "make".  This adds to the
+    "libunp.a" library.  Similarly go into the  "libgai", "libroute" and
+    "libxti" directories and "make".  The "libroute" directory should only
+    be used if your system supports 4.4BSD-style routing sockets.  The
+    "libxti" directory should only be used if your system supports XTI
+    (not TLI).
+
+4.  Once the library is made, you can then go into any of the source code
+    directories and make whatever program you are interested in.  A good
+    starting poing is the "intro" directory and "make daytimetcpcli".
+
+NOTES
+=====
+
+- I have run most of the programs on the following Unix systems:
+
+	alpha-dec-osf3.2
+	alpha-dec-osf4.0
+	hppa1.1-hp-hpux10.30
+	i386-pc-bsdi3.0
+	i386-univel-sysv4.2MP   (UnixWare 2.1.2)
+	i586-pc-linux-gnu       (RedHat Linux 4.2)
+	powerpc-ibm-aix4.2.0.0
+	sparc-sun-solaris2.5.1
+	sparc-sun-solaris2.6
+	sparc-sun-sunos4.1.4
+
+  These are the names used by the autoconf system to identify the
+  hardware, vendor, and operating system.
+
+  The code should port quite easily to other Unix systems, but I do
+  *NOT* have time to help everyone port the code to different
+  environments.  Please do *NOT* send me email with your "make" output
+  asking me to tell you what to do.
+
+- BEWARE: Not all programs in each directory will compile on all systems
+  (e.g., the file unpv12erc/advio/recvfromflags.c will not compile unless
+  your system supports the IP_RECVDSTADDR socket option).
+
+  Also, not all files in each directory are included in the book.  Beware
+  of any files with "test" in the filename: they are probably a quick test
+  program that I wrote to check something, and may or may not work.
+
+- You may find comments of the form "/* begin FOO */" followed later by
+  a "/* end FOO */".  These delineate pieces of source code for the loom
+  program that includes the source code in the book.  Ignore these.
+
+  Similarly you will encounter comments that begin with "4" or "8".
+  These are used to move the comment to the right by that number of
+  spaces, getting around the GNU indent program.  Ignore these.
+
+- I have included the "sock" program that was introduced with "TCP/IP
+  Illustrated, Volume 1" and also used in this Volume of UNP.  It is in
+  the "sock/" directory.  The code compiles and works, but has never been
+  cleaned up.
+
+- Many systems do not have correct function prototypes for the socket
+  functions, and this can cause many warnings during compilation.
+  For example, Solaris 2.5 omits the "const" from the 2nd argument
+  to connect().  Lots of systems use "int" for the length of socket
+  address structures, while Posix.1g specifies "socklen_t".  Lots of
+  systems still have the pointer argument to [sg]etsockopt() as a
+  "char *" instead of a "void *", and this also causes warnings.
+
+- SunOS 4.1.x: If you are using Sun's acc compiler, you need to run
+  the configure program as
+
+        CC=acc CFLAGS=-w CPPFLAGS=-w ./configure
+
+  Failure to do this results in numerous system headers (<sys/sockio.h>)
+  not being found during configuration, causing compile errors later.
+
+- If your system supports IPv6 and you want to run the examples in the
+  book using hostnames, you must install the latest BIND release.  You
+  can get it from ftp://ftp.vix.com/pub/bind/release.  All you need from
+  this release is a resolver library that you should then add to the
+  LDLIBS and LDLIBS_THREADS lines.
+
+- IPv6 support is still in its infancy.  There may be differences
+  between the IPv6 sockets API specifications and what the vendor
+  provides.  This *WILL* require hand tweaking, but should get better
+  over time.
+
+- If your system supports an older draft of the Posix pthreads standard,
+  but configure detects the support of pthreads, you will have to disable
+  this by hand.  Digital Unix V3.2C has this problem, for example, as it
+  supports draft 4, not the final draft.  AIX 4.2 supports draft 7, not
+  the final standard.
+
+  To fix this, remove wrappthread.o from LIB_OBJS in "Make.defines" and
+  don't try to build and run any of the threads programs.
+
+COMMON DIFFERENCES
+==================
+
+These are the common differences that I see in various headers that are
+not "yet" at the level of Posix.1g or X/Open XNS Issue 5.
+
+- getsockopt() and setsockopt(): 5th argument is not correct type.
+
+- t_bind(): second argument is missing "const".
+
+- t_connect(): second argument is missing "const".
+
+- t_open(): first argument is missing "const".
+
+- t_optmsmg(): second argument is missing "const".
+
+- If your <xti.h> defines the members of the t_opthdr{} as longs,
+  instead of t_uscalar_t, some of the printf formats of these value
+  might generate warnings from your compiler, since you are printing
+  a long without a corresponding long format specifier.

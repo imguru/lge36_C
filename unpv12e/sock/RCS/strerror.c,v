@@ -1,0 +1,41 @@
+head     1.1;
+branch   ;
+access   ;
+symbols  ;
+locks    ;
+comment  @ * @;
+
+
+1.1
+date     94.01.17.14.59.31;  author rstevens;  state Exp;
+branches ;
+next     ;
+
+
+desc
+@@
+
+
+
+1.1
+log
+@08Dec93 version for tcpipi
+@
+text
+@#include	<stdio.h>
+
+extern char	*sys_errlist[];
+extern int	sys_nerr;
+
+char *
+strerror(int error)
+{
+	static char	mesg[30];
+
+	if (error >= 0 && error <= sys_nerr)
+		return(sys_errlist[error]);
+
+	sprintf(mesg, "Unknown error (%d)", error);
+	return(mesg);
+}
+@
