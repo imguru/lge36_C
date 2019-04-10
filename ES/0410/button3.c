@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h> //exit함수를 사용하기 위함
+#include <stdlib.h>
 #include <wiringPi.h>
 
 #define INTERRUPT_GPIO 4
@@ -46,13 +46,3 @@ int main(void)
 	}
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-
