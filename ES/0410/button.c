@@ -6,7 +6,6 @@
 
 // Interrupt
 // : 평소에 다른일을 수행하다가, 하드웨어의 변화가 감지되면, 정해진 핸들러를 호출하는 방식.
-
 void blink(void) {
 	printf("인터럽트 신호 발생...\n");
 }
@@ -16,6 +15,10 @@ int main(void) {
 	// g, ]
 	// ctrl + t
 	// 특정한 GPIO의 이벤트가 발생하였을 때, 수행할 핸들러를 등록하는 함수.
+
+	// 주의사항
+	// pinmode가 INPUT 이어야 합니다.
+	pinMode(SW, INPUT);
 
 	// mode
 	//  INT_EDGE_RISING
