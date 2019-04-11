@@ -7,7 +7,9 @@
 #include <stdio.h>
 
 // Packet
-// len(2):temp(4):cds(4)
+// temp(4):cds(4)
+// TCP는 데이터의 경계가 존재하지 않으므로, 데이터를 보내기 전에,
+// 길이를 보내야 한다.
 
 int main() {
 	int csock = socket(PF_INET, SOCK_STREAM, 0);
@@ -31,9 +33,9 @@ int main() {
 	int ret;
 
 	// buf
-	//   temp(4):cds(4)
+	//   len(2):temp(4):cds(4)
 	int i, j;
-	int len;
+	short len;
 	for (i = 0; i < 100; ++i) {
 		int cds = 42;
 		int temp = 100;
@@ -45,18 +47,18 @@ int main() {
 		*(int *)p = htonl(cds);
 		p += sizeof(int);
 
-		len = p - buf;
-		write(csock, buf, p - buf);
-		// getchar();
+		len = htons(p - buf);
 
+		write(csock, &len, sizeof len);
+		write(csock, buf, p - buf);
 #if 0
-		for (j = 0; j < len; ++j) {
+		for (j = 0; j < p-buf; ++j) {
 			write(csock, buf + j, 1);
 			usleep(10);
 		}
 #endif
 	}
-
+	
 	close(csock);
 	return 0;
 }
