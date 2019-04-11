@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -37,6 +36,20 @@ void forward(int step) {
 	}
 }
 
+void backward(int step) {
+	int i, j, k;
+
+	for (i = 0;	i < step; ++i) {
+		for (j = 0; j < 8; ++j) {
+			for (k = 0; k < 4; ++k) {
+				digitalWrite(pin[k], seq[8 - j - 1][k]);
+			}
+			delayMicroseconds(800);  // 800us
+		}
+	}
+}
+
+
 int main(void) {
 	int i;
 
@@ -47,6 +60,8 @@ int main(void) {
 
 	while (1) {
 		forward(1024);
+		delay(100);
+		backward(1024);
 		delay(100);
 	}
 
