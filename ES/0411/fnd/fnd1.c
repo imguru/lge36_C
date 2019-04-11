@@ -55,6 +55,9 @@ int main(void) {
 	}
 
 	digitalWrite(1, HIGH);
+	digitalWrite(0, LOW);
+	digitalWrite(0, LOW);
+
 	while (1) {
 		showDigit(3);
 		delay(1);
