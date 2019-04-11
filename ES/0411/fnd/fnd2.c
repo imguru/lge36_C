@@ -27,7 +27,7 @@ int num[10][8] = {
 };
 
 // num: 0 ~ 9
-void showDigit(int value) {
+void showDigit(int select, int value) {
 	int i;
 	if (value < 0 || value > 9) {
 		printf("out of index: %d\n", value);
@@ -36,6 +36,9 @@ void showDigit(int value) {
 
 	int *arr = num[value];
 
+	for (i = 1; i <= 3; ++i) {
+		digitalWrite(i, select == i);
+	}
 
 	for (i = 0; i < 8; ++i) {
 		digitalWrite(led[i], arr[i]);
@@ -54,12 +57,8 @@ int main(void) {
 		pinMode(i + 1, OUTPUT);
 	}
 
-	digitalWrite(1, HIGH);
-	digitalWrite(2, LOW);
-	digitalWrite(3, LOW);
-
 	while (1) {
-		showDigit(3);
+		showDigit(2, 3);
 		delay(1);
 	}
 }
