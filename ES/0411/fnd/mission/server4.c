@@ -119,12 +119,9 @@ void showDigit3(int value) {
 	}
 }
 
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 void *fnd_thread(void *arg) {
 	while (1) {
-		// pthread_mutex_lock(&mutex);
 		showDigit3(fnd_value);
-		// pthread_mutex_unlock(&mutex);
 	}
 
 	return 0;
@@ -297,13 +294,11 @@ int main() {
 			servo_on = temp >= 33;
 			step_on = cds >= 1024;
 
-			// pthread_mutex_lock(&mutex);
 			if (mode == 0) {
 				fnd_value = temp;
 			} else {
 				fnd_value = cds;
 			}
-			// pthread_mutex_unlock(&mutex);
 
 			printf("%d - temp: %d, cds: %d\n", ++i, temp, cds);
 		}
