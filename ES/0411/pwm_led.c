@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <wiringPi.h>
 
-#define RGB_LED1 26
-#define RGB_LED2 23
+#define RGB_LED1 23
+#define RGB_LED2 26
 
 int main(void) {
 	int bright;
@@ -23,13 +23,13 @@ int main(void) {
 
 	while (1) {
 		for (bright = 0; bright < 1024; ++bright) {
-			pwmWrite(RGB_LED1, bright);
+			pwmWrite(RGB_LED2, bright);
 			// pwmWrite(RGB_LED2, bright);
 			delay(1);
 		}
 
 		for (bright = 1023; bright >= 0; --bright) {
-			pwmWrite(RGB_LED1, bright);
+			pwmWrite(RGB_LED2, bright);
 			// pwmWrite(RGB_LED2, bright);
 			delay(1);
 		}
