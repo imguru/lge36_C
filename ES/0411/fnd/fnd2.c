@@ -58,7 +58,13 @@ int main(void) {
 	}
 
 	while (1) {
-		showDigit(2, 3);
+		showDigit(1, 1);
+		delay(1);
+
+		showDigit(2, 0);
+		delay(1);
+
+		showDigit(3, 0);
 		delay(1);
 	}
 }
