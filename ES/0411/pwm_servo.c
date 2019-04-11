@@ -7,6 +7,8 @@
 
 #define SERVO_GPIO 25
 
+// $ gcc pwm_servo.c -lwiringPi ~/wiringPi/wiringPi/softServo.c
+
 int main(void) {
 	if (wiringPiSetup() == -1) {
 		exit(1);
